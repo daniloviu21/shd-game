@@ -1,0 +1,90 @@
+.login-container {
+    --background: hwb(0 100% 0%); // Fondo principal
+    text-align: center;
+    color: white;
+  
+    .logo h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 20px;
+  
+      .mael {
+        color: #a4bcfc; // Azul claro
+      }
+      .store {
+        color: #6d81b5; // Azul grisáceo
+      }
+      .num {
+        color: #0e2a71; // Azul profundo
+      }
+    }
+  
+    .title {
+      font-size: 1.3rem;
+      margin: 10px 0 20px;
+      color: #aeb5c6; // Gris claro
+    }
+  
+    .form {
+      ion-item {
+        background: #3c404e; // Gris oscuro
+        border-radius: 10px;
+        margin: 10px 20px;
+        ion-input {
+          color: rgb(0, 0, 0);
+        }
+        ion-icon {
+          color: #6d81b5; // Azul grisáceo
+        }
+      }
+    }
+  
+    .remember {
+      justify-content: center;
+      color: #000000; // Gris claro
+      ion-checkbox {
+        margin-right: 10px;
+        justify-content: center;
+
+        --checkbox-background-checked: #0e2a71; // Azul profundo
+        --checkbox-border-color: #6d81b5; // Azul grisáceo
+      }
+    }
+  
+    .sign-in-btn {
+      --background: #0e2a71; // Azul profundo
+      --border-color: #a4bcfc; // Azul claro
+      --border-width: 2px;
+      --border-style: solid;
+      color: white;
+      font-weight: bold;
+      margin: 15px 20px;
+    }
+  
+    .separator {
+      margin: 15px 0;
+      color: #aeb5c6; // Gris claro
+    }
+  
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+  
+      ion-button {
+        --color: white;
+        text-transform: none;
+        background: #6d81b5; // Azul grisáceo
+      }
+    }
+  
+    .signup-text {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      a {
+        color: #a4bcfc; // Azul claro
+        text-decoration: none;
+      }
+    }
+  }
+  

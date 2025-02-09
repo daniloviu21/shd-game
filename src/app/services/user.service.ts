@@ -34,7 +34,7 @@ export class UserService {
       usuario: 'angel',
       contraseña: 'tumama',
       nombreUsuario: 'UndamagedOyster',
-      points: 80,
+      points: 0,
       avatarUrl: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
       videojuegos: [
         {
@@ -75,5 +75,11 @@ export class UserService {
     this.usuarios.push(usuario);
   }
 
-  constructor() { }
+  calcularPuntosUsuario(usuario: Usuario): void {
+    usuario.points = usuario.videojuegos.reduce((total, videojuego) => total + videojuego.puntosObtenidos, 0);
+  }
+
+  constructor() { 
+    this.usuarios.forEach(usuario => this.calcularPuntosUsuario(usuario));
+  }
 }

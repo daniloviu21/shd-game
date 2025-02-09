@@ -15,6 +15,11 @@ import { ItemArchivementComponent } from './item-archivement/item-archivement.co
   imports: [
     CommonModule,
     IonicModule
+  ],
+  exports: [
+    ProfileComponent,
+    HeaderComponent,
+    ItemArchivementComponent
   ]
 })
 export class ComponentsModule {}

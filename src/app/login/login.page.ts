@@ -8,7 +8,7 @@ import { NavController } from '@ionic/angular';
   standalone: false
 })
 export class LoginPage implements OnInit {
-  email: string = '';
+  username: string = '';
   password: string = '';
   rememberMe: boolean = false;
   showPassword: boolean = false;
@@ -25,10 +25,10 @@ export class LoginPage implements OnInit {
 
   // Función de inicio de sesión
   login() {
-    if (this.email && this.password) {
-      console.log('Logging in with', this.email, this.password);
+    if (this.username && this.password) {
+      console.log('Logging in with', this.username, this.password);
       // Aquí puedes redirigir a otra página después del login
-      this.navCtrl.navigateForward('/home');
+      this.navCtrl.navigateForward('/tab');
     } else {
       console.log('Please enter email and password');
     }

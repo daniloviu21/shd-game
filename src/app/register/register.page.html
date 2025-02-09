@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Bienvenido!</ion-title>
+    <ion-title>Regístrate</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,13 +14,28 @@
     </div>
   
     <!-- Título -->
-    <h2 class="title">Inicia sesión con tu cuenta</h2>
+    <h2 class="title">Crea una nueva cuenta</h2>
   
     <!-- Formulario -->
     <ion-list class="form">
       <ion-item>
         <ion-icon name="person-outline" slot="start"></ion-icon>
-        <ion-input type="text" placeholder="Ingrese su usuario " [(ngModel)]="username"></ion-input>
+        <ion-input type="text" placeholder="Ingrese su nombre " [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Ingrese su apellido " [(ngModel)]="lastName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-input type="email" placeholder="Ingrese su correo electrónico " [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Genere un nuevo usuario " [(ngModel)]="username"></ion-input>
       </ion-item>
   
       <ion-item>
@@ -40,22 +55,14 @@
     </ion-item>
   
     <!-- Botón de inicio de sesión -->
-    <ion-button class="btn-17" expand="full" class="sign-in-btn" (click)="login()">
+    <ion-button class="btn-17" expand="full" class="sign-in-btn" (click)="register()">
       <span class="text-container">
-        <span class="text">Iniciar sesión</span>
+        <span class="text">Registrarse</span>
       </span></ion-button>
 
   
-    <!-- Continuar con -->
-    <div class="separator">O puedes iniciar sesión con:</div>
-  
-    <div class="social-login">
-      <ion-button fill="clear" class="google"><ion-icon name="logo-google"></ion-icon>  Google</ion-button>
-      <ion-button fill="clear" class="facebook"><ion-icon name="logo-facebook"></ion-icon>  Facebook</ion-button>
-      <ion-button fill="clear" class="github"><ion-icon name="logo-github"></ion-icon>  Github</ion-button>
-    </div>
   
     <!-- Registro -->
-    <p class="signup-text">¿No tienes una cuenta? <a routerLink="/register">Regístrate</a></p>
+    <p class="signup-text">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></p>
   </ion-content>
 

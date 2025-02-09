@@ -9,13 +9,13 @@ import { UserService, Usuario } from '../services/user.service';
 })
 export class Tab2Page {
 
-  usuario!: Usuario;
+  usuario!: Usuario | null;
 
   constructor(private userService: UserService) {
     this.loadUsuario();
   }
 
   loadUsuario(){
-    this.usuario = this.userService.getUsuarios()[0];
+    this.usuario = this.userService.getUsuario();
   }
 }

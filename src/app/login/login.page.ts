@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { UserService, Usuario } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,11 @@ export class LoginPage implements OnInit {
   username: string = '';
   password: string = '';
   rememberMe: boolean = false;
-  showPassword: boolean = false;
+  showPassword: boolean = false;  
 
-  constructor(private navCtrl: NavController) {}
+  usuario!: Usuario | null;
+
+  constructor(private navCtrl: NavController, private userService: UserService) {}
 
   ngOnInit() {}
 
@@ -29,7 +32,15 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    console.log('Logging in with', this.username, this.password);
-    this.navCtrl.navigateForward('/tabs'); // Redirige a tabs
+    // Usar el servicio para autenticar al usuario
+    const user = this.usuario = this.userService.authenticate(this.username, this.password);
+
+    if (user) {
+      console.log('Inicio de sesión exitoso', user);
+      this.navCtrl.navigateForward('/tabs'); // Redirige a tabs
+      this.userService.setUsuario(user);
+    } else {
+      console.log('Credenciales incorrectas');
+    }
   }      
 }

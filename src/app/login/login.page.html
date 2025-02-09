@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bienvenido!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-content class="login-container">
+    <!-- Logo -->
+    <div class="logo">
+      <h1><span class="mael">Los</span><span class="store">panas</span><span class="num">frescos</span></h1>
+    </div>
+
+    <!-- Título -->
+    <h2 class="title">Inicia sesión con tu cuenta</h2>
+
+    <!-- Formulario -->
+    <ion-list class="form">
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Ingrese su usuario" [(ngModel)]="username" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-input [type]="showPassword ? 'text' : 'password'" placeholder="Ingresa tu contraseña" [(ngModel)]="password" required></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <!-- Recordarme -->
+    <div class="remember">
+      <ion-checkbox [(ngModel)]="rememberMe"></ion-checkbox>
+      <label>Recuérdame</label>
+    </div>
+
+    <!-- Botón de inicio de sesión -->
+    <ion-button class="btn-17" expand="full" class="sign-in-btn" (click)="login()" [disabled]="!username || !password">
+      <span class="text-container">
+        <span class="text">Iniciar sesión</span>
+      </span>
+    </ion-button>
+
+    <!-- Continuar con -->
+    <div class="separator">O puedes iniciar sesión con:</div>
+
+    <div class="social-login">
+      <ion-button fill="clear" class="google"><ion-icon name="logo-google"></ion-icon> Google</ion-button>
+      <ion-button fill="clear" class="facebook"><ion-icon name="logo-facebook"></ion-icon> Facebook</ion-button>
+      <ion-button fill="clear" class="github"><ion-icon name="logo-github"></ion-icon> Github</ion-button>
+    </div>
+
+    <!-- Registro -->
+    <p class="signup-text">¿No tienes una cuenta? <a routerLink="/register">Regístrate</a></p>
+  </ion-content>
+</ion-content>

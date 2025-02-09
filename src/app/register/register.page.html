@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Regístrate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+  <ion-content class="login-container">
+    <!-- Logo -->
+    <div class="logo">
+      <h1><span class="mael">Los</span><span class="store">panas</span><span class="num">frescos</span></h1>
+    </div>
+  
+    <!-- Título -->
+    <h2 class="title">Crea una nueva cuenta</h2>
+  
+    <!-- Formulario -->
+    <ion-list class="form">
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Ingrese su nombre " [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Ingrese su apellido " [(ngModel)]="lastName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-input type="email" placeholder="Ingrese su correo electrónico " [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Genere un nuevo usuario " [(ngModel)]="username"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-input [type]="showPassword ? 'text' : 'password'" 
+                   placeholder="Ingresa tu contraseña: " 
+                   [(ngModel)]="password">
+        </ion-input>
+      </ion-item>
+      
+    </ion-list>
+  
+    <!-- Botón de inicio de sesión -->
+    <ion-button class="btn-17" expand="full" class="sign-in-btn" (click)="register()" [disabled]="!isFormValid()">
+      <span class="text-container">
+        <span class="text">Registrarse</span>
+      </span>
+    </ion-button>
+    
+
+  
+  
+    <!-- Registro -->
+    <p class="signup-text">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></p>
+  </ion-content>
+

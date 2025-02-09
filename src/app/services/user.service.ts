@@ -20,6 +20,8 @@ export interface Usuario {
   contraseña: string;
   nombreUsuario: string;
   videojuegos: Videojuego[];
+  points: number;
+  avatarUrl: string;
 }
 
 @Injectable({
@@ -32,6 +34,8 @@ export class UserService {
       usuario: 'angel',
       contraseña: 'tumama',
       nombreUsuario: 'UndamagedOyster',
+      points: 80,
+      avatarUrl: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
       videojuegos: [
         {
           nombreVideojuego: 'Minecraft',

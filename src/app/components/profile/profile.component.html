@@ -1,13 +1,15 @@
 <ion-card>
   <ion-item>
     <ion-avatar aria-hidden="true" slot="start" style="width: 80px; height: 80px;">
-      <img alt="" [src]="avatarUrl" style="width: 100%; height: 100%;" />
+      <img alt="" [src]="usuario.avatarUrl" style="width: 100%; height: 100%;" />
     </ion-avatar>
     <ion-label>
-      <strong style="font-size: 25px;">{{username}}</strong>
+      <strong style="font-size: 25px;">{{usuario.nombreUsuario}}</strong>
       <br>
-      <ion-note style="font-size: 18px;">{{points}}</ion-note>
-      <br>
+      <ion-label class="label-points">
+        <ion-icon name="flash-outline"></ion-icon>
+        <ion-note style="font-size: 18px;">{{usuario.points}}</ion-note>
+      </ion-label>
       <ion-icon name="add-circle-outline" style="font-size: 25px;"></ion-icon>
     </ion-label>
   </ion-item>

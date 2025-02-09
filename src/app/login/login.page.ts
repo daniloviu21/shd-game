@@ -27,8 +27,7 @@ export class LoginPage implements OnInit {
   login() {
     if (this.username && this.password) {
       console.log('Logging in with', this.username, this.password);
-      // Aquí puedes redirigir a otra página después del login
-      this.navCtrl.navigateForward('/tab');
+      this.navCtrl.navigateForward('/tabs'); // Redirige a tabs
     } else {
       console.log('Please enter email and password');
     }

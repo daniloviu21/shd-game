@@ -29,11 +29,11 @@ export class RegisterPage implements OnInit {
     // Función de inicio de sesión
     register() {
       if (this.email && this.name && this.lastName && this.username && this.password  ) {
-        console.log('Logging in with', this.username, this.password);
+        console.log('Sesión iniciada con', this.username, this.password);
         // Aquí puedes redirigir a otra página después del login
         this.navCtrl.navigateForward('/tab');
       } else {
-        console.log('Please enter email and password');
+        console.log('Rellene todos los campos');
       }
     }
   }

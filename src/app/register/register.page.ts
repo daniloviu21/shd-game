@@ -24,14 +24,29 @@ export class RegisterPage implements OnInit {
     togglePassword() {
       this.showPassword = !this.showPassword;
     }
+
+    isValidEmail(email: string): boolean {
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailRegex.test(email);
+    }
   
+    isFormValid(): boolean {
+      return (
+        this.name.trim() !== '' && 
+        this.lastName.trim() !== '' && 
+        this.username.trim() !== '' && 
+        this.password.trim() !== '' && 
+        this.isValidEmail(this.email)  // Esta función ahora devuelve un booleano
+      );
+    }
+    
   
     // Función de inicio de sesión
     register() {
       if (this.email && this.name && this.lastName && this.username && this.password  ) {
         console.log('Sesión iniciada con', this.username, this.password);
         // Aquí puedes redirigir a otra página después del login
-        this.navCtrl.navigateForward('/tab');
+        this.navCtrl.navigateForward('/tabs');
       } else {
         console.log('Rellene todos los campos');
       }

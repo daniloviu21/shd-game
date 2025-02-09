@@ -22,14 +22,14 @@ export class LoginPage implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-
   // Función de inicio de sesión
   login() {
-    if (this.username && this.password) {
-      console.log('Logging in with', this.username, this.password);
-      this.navCtrl.navigateForward('/tabs'); // Redirige a tabs
-    } else {
-      console.log('Please enter email and password');
+    if (!this.username || !this.password) {
+      console.log('Por favor ingrese su usuario y contraseña');
+      return;
     }
-  }
+
+    console.log('Logging in with', this.username, this.password);
+    this.navCtrl.navigateForward('/tabs'); // Redirige a tabs
+  }      
 }

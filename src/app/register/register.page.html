@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/login"></ion-back-button>
+    </ion-buttons>
     <ion-title>Regístrate</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -48,17 +51,13 @@
       
     </ion-list>
   
-    <!-- Recordarme -->
-    <ion-item lines="none" class="remember">
-      <ion-checkbox [(ngModel)]="rememberMe"></ion-checkbox>
-      <label>Recuérdame</label>
-    </ion-item>
-  
     <!-- Botón de inicio de sesión -->
-    <ion-button class="btn-17" expand="full" class="sign-in-btn" (click)="register()">
+    <ion-button class="btn-17" expand="full" class="sign-in-btn" (click)="register()" [disabled]="!isFormValid()">
       <span class="text-container">
         <span class="text">Registrarse</span>
-      </span></ion-button>
+      </span>
+    </ion-button>
+    
 
   
   

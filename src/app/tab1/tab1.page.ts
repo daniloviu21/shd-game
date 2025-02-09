@@ -15,8 +15,13 @@ export class Tab1Page {
       this.loadUsuario();
     }
   
-    loadUsuario(){
-      this.usuario = this.userService.getUsuarios()[0];
+    loadUsuario() {
+      const usuario = this.userService.getUsuario();
+      if (usuario) {
+        this.usuario = usuario;
+      } else {
+        console.error('No hay un usuario autenticado.');
+      }
     }
 
 }

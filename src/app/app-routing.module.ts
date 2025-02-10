@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'videojuego-detalles',
+    loadChildren: () => import('./videojuego-detalles/videojuego-detalles.module').then( m => m.VideojuegoDetallesPageModule)
   }
 ];
 

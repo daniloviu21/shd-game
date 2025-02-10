@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ juego.nombreVideojuego }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="agregarLogro()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let logro of juego.logros; let i = index">
+      <ion-checkbox slot="start" [(ngModel)]="logro.completado" (ionChange)="actualizarSeleccion(i)"></ion-checkbox>
+      <ion-label>
+        <h2>{{ logro.nombreLogro }}</h2>
+        <p>Puntos: {{ logro.puntos }}</p>
+      </ion-label>
+      <ion-button fill="clear" slot="end" [disabled]="!logro.seleccionado" (click)="eliminarLogro(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

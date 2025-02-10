@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderComponent  implements OnInit {
   @Input() title !: string;
 
-  constructor() { }
+  constructor(private navController: NavController) { }
 
   ngOnInit() {}
+
+
+navigateToLogin() {
+  this.navController.navigateRoot('/login');
+}
 
 }

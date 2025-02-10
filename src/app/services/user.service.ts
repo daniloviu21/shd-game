@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 export interface Logro {
   nombreLogro: string;
   puntos: number;
+  completado?: boolean; // Añadir este campo para manejar el estado de completado
+  seleccionado?: boolean; // Añadido para manejar la selección para eliminación
 }
 
 export interface Videojuego {
+  id: string;  // Asegúrate de que cada juego tenga un identificador único
   nombreVideojuego: string;
   logrosTotales: number;
   logrosCompletados: number;
@@ -34,10 +38,11 @@ export class UserService {
       correo: 'angel',
       contraseña: 'tumama',
       nombreUsuario: 'UndamagedOyster',
-      points: 0,
+      points: 2000,
       avatarUrl: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
       videojuegos: [
         {
+          id: "2288282828822",
           nombreVideojuego: 'Minecraft',
           logrosTotales: 150,
           logrosCompletados: 30,
@@ -50,6 +55,7 @@ export class UserService {
           ]
         },
         {
+          id: "2727636782000",
           nombreVideojuego: 'Fortnite',
           logrosTotales: 200,
           logrosCompletados: 50,
@@ -71,6 +77,7 @@ export class UserService {
       avatarUrl: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
       videojuegos: [
         {
+          id: "764647393973",
           nombreVideojuego: 'Overwatch',
           logrosTotales: 100,
           logrosCompletados: 25,
@@ -83,6 +90,7 @@ export class UserService {
           ]
         },
         {
+          id: "292939444433",
           nombreVideojuego: 'League of Legends',
           logrosTotales: 80,
           logrosCompletados: 20,
@@ -96,7 +104,7 @@ export class UserService {
         }
       ]
     },
-    {
+    {  
       correo: 'john_doe@example.com',
       contraseña: 'securepass',
       nombreUsuario: 'Johnny',
@@ -104,6 +112,7 @@ export class UserService {
       avatarUrl: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
       videojuegos: [
         {
+          id: "0981811872899",
           nombreVideojuego: 'The Witcher 3',
           logrosTotales: 78,
           logrosCompletados: 48,
@@ -125,6 +134,7 @@ export class UserService {
       avatarUrl: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
       videojuegos: [
         {
+          id: "10028837892",
           nombreVideojuego: 'Animal Crossing',
           logrosTotales: 120,
           logrosCompletados: 85,
@@ -155,17 +165,51 @@ export class UserService {
     usuario.points = usuario.videojuegos.reduce((total, videojuego) => total + videojuego.puntosObtenidos, 0);
   }
 
-  constructor() { 
-    this.usuarios.forEach(usuario => this.calcularPuntosUsuario(usuario));
+  constructor(private storage: Storage) { 
+    //this.usuarios.forEach(usuario => this.calcularPuntosUsuario(usuario));
+    this.init();
   }
 
-  authenticate(username: string, password: string): Usuario | null{
+  async init() {
+    await this.storage.create();
+    this.loadInitialData();
+  }
+
+  authenticate(username: string, password: string): Usuario | null {
     const user = this.usuarios.find(u => u.nombreUsuario === username && u.contraseña === password);
-    return user || null;  // Retorna el usuario si es encontrado, sino retorna null
+    if (user) {
+      this.setUsuario(user);
+      this.saveCurrentUser();  // Guarda el usuario actual en el almacenamiento local
+    }
+    return user || null;
   }
 
-  
   setUsuario(usuario: Usuario) {
     this.usuarioActual = usuario;
+  }
+
+  async loadInitialData(): Promise<void> {
+    await this.loadCurrentUser();
+  }
+
+  async loadCurrentUser(): Promise<void> {
+    const user = await this.storage.get('currentUser');
+    this.usuarioActual = user ? user as Usuario : null;
+  }
+
+  async saveCurrentUser(): Promise<void> {
+    if (this.usuarioActual) {
+      await this.storage.set('currentUser', this.usuarioActual);
+    }
+  }
+
+  getJuegoById(juegoId: string): Videojuego | undefined {
+    for (const usuario of this.usuarios) {
+      const juego = usuario.videojuegos.find(j => j.id === juegoId);
+      if (juego) {
+        return juego;
+      }
+    }
+    return undefined;  // Retorna undefined si no se encuentra el juego
   }
 }

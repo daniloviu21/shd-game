@@ -1,5 +1,10 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
     <ion-title style="text-align: center;">{{title}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="navigateToLogin()">
+        <ion-icon slot="icon-only" ios="log-out-outline" md="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>

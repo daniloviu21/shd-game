@@ -1,8 +1,8 @@
 import { Component, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { Videojuego } from '../../services/user.service';
+import ChartDataLabels from 'chartjs-plugin-datalabels'; // Importa el plugin
 
-Chart.register(...registerables);
+Chart.register(...registerables, ChartDataLabels);  // Registra el plugin
 
 @Component({
   selector: 'app-logros-chart',
@@ -12,7 +12,7 @@ Chart.register(...registerables);
 })
 export class LogrosChartComponent implements AfterViewInit {
   @ViewChild('logrosChart') logrosChart: any;
-  @Input() juego!: Videojuego; // Recibe datos dinámicos
+  @Input() juego!: { nombreVideojuego: string, logrosTotales: number, logrosCompletados: number }; // Ajuste de la estructura del input
   chart!: Chart;
 
   ngAfterViewInit() {
@@ -34,7 +34,7 @@ export class LogrosChartComponent implements AfterViewInit {
         datasets: [
           {
             label: this.juego.nombreVideojuego,
-            data: [this.juego.logrosTotales, this.juego.logrosCompletados ],
+            data: [this.juego.logrosTotales, this.juego.logrosCompletados],
             backgroundColor: ['#0e2a71', '#6d81b5'], 
             borderColor: ['#a4bcfc', '#aeb5c6'], 
             borderWidth: 1,
@@ -47,9 +47,21 @@ export class LogrosChartComponent implements AfterViewInit {
           legend: {
             display: false,
           },
+          datalabels: {
+            color: 'white',  // Color del texto
+            anchor: 'center',  // Posición de las etiquetas
+            align: 'center',  // Alineación del texto
+            font: {
+              weight: 'bold',
+              size: 16,
+            },
+            formatter: (value) => value.toString(), // Muestra el valor
+          },
         },
         scales: {
-          y: { beginAtZero: true },
+          y: { 
+            beginAtZero: true 
+          },
         },
       },
     });

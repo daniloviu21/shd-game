@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { UserService, Usuario } from '../services/user.service';
 
 @Component({
@@ -16,7 +16,11 @@ export class LoginPage implements OnInit {
 
   usuario!: Usuario | null;
 
-  constructor(private navCtrl: NavController, private userService: UserService) {}
+  constructor(
+    private navCtrl: NavController, 
+    private userService: UserService, 
+    private toastController: ToastController
+  ) {}
 
   ngOnInit() {}
 
@@ -26,21 +30,30 @@ export class LoginPage implements OnInit {
   }
 
   // Función de inicio de sesión
-  login() {
+  async login() {
     if (!this.username || !this.password) {
-      console.log('Por favor ingrese su usuario y contraseña');
+      await this.showToast('Por favor ingrese su usuario y contraseña', 'warning');
       return;
     }
 
-    // Usar el servicio para autenticar al usuario
-    const user = this.usuario = this.userService.authenticate(this.username, this.password);
+    this.usuario = this.userService.authenticate(this.username, this.password);
 
-    if (user) {
-      console.log('Inicio de sesión exitoso', user);
-      this.navCtrl.navigateForward('/tabs'); // Redirige a tabs
-      this.userService.setUsuario(user);
+    if (this.usuario) {
+      console.log('Inicio de sesión exitoso', this.usuario);
+      this.userService.setUsuario(this.usuario);
+      this.navCtrl.navigateForward('/tabs');
     } else {
-      console.log('Credenciales incorrectas');
+      await this.showToast('Credenciales incorrectas');
     }
-  }      
+  }
+  
+  async showToast(message: string, color: string = 'warning') {
+    const toast = await this.toastController.create({
+      message,
+      duration: 4000,
+      color,
+    });
+
+    await toast.present();
+  }
 }

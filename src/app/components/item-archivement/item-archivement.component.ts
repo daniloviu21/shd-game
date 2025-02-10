@@ -9,7 +9,7 @@ import { Usuario } from 'src/app/services/user.service';
 })
 export class ItemArchivementComponent  implements OnInit {
 
-  @Input() usuario!: Usuario;
+  @Input() usuario!: Usuario | null;
   
   constructor() { }
 

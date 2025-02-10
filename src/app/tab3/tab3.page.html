@@ -2,19 +2,9 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item>
-      <ion-label>Juego 1</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Juego 2</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Juego 3</ion-label>
-    </ion-item>
-  </ion-list>
-
-  <div class="chart-container">
-    <canvas #logrosChart></canvas>
-  </div>
+  
+    
+    <!-- Aquí se usa el componente dinámico para cada juego -->
+    <app-logros-chart *ngFor="let juego of usuario?.videojuegos" [juego]="juego"></app-logros-chart>
+  
 </ion-content>

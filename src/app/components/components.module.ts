@@ -5,12 +5,14 @@ import { IonicModule } from '@ionic/angular';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { ItemArchivementComponent } from './item-archivement/item-archivement.component';
+import { LogrosChartComponent } from './logros-chart/logros-chart.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     HeaderComponent,
-    ItemArchivementComponent
+    ItemArchivementComponent,
+    LogrosChartComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { ItemArchivementComponent } from './item-archivement/item-archivement.co
   exports: [
     ProfileComponent,
     HeaderComponent,
-    ItemArchivementComponent
+    ItemArchivementComponent,
+    LogrosChartComponent
   ]
 })
 export class ComponentsModule {}

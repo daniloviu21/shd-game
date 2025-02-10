@@ -6,13 +6,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { ItemArchivementComponent } from './item-archivement/item-archivement.component';
 import { LogrosChartComponent } from './logros-chart/logros-chart.component';
+import { GamesComponent } from './games/games.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     HeaderComponent,
     ItemArchivementComponent,
-    LogrosChartComponent
+    LogrosChartComponent,
+    GamesComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { LogrosChartComponent } from './logros-chart/logros-chart.component';
     ProfileComponent,
     HeaderComponent,
     ItemArchivementComponent,
-    LogrosChartComponent
+    LogrosChartComponent,
+    GamesComponent
   ]
 })
 export class ComponentsModule {}

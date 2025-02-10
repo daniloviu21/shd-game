@@ -48,7 +48,7 @@ export class UserService {
           logrosCompletados: 30,
           puntosTotales: 1000,
           puntosObtenidos: 150,
-          imagen: "Holaaaaaaaaaaa",
+          imagen: "assets/images/minecraft.jpg",
           logros: [
             { nombreLogro: 'Construir Casa', puntos: 50 },
             { nombreLogro: 'Sobrevivir la Noche', puntos: 100 }
@@ -61,7 +61,7 @@ export class UserService {
           logrosCompletados: 50,
           puntosTotales: 1500,
           puntosObtenidos: 300,
-          imagen: "",
+          imagen: "assets/images/fortnite.png",
           logros: [
             { nombreLogro: 'Primera Victoria', puntos: 150 },
             { nombreLogro: '100 Enemigos Derrotados', puntos: 150 }
@@ -83,7 +83,7 @@ export class UserService {
           logrosCompletados: 25,
           puntosTotales: 700,
           puntosObtenidos: 175,
-          imagen: "overwatch_icon.png",
+          imagen: "assets/images/overwatch.png",
           logros: [
             { nombreLogro: 'Win 10 Matches', puntos: 50 },
             { nombreLogro: 'Heal 1000 Points', puntos: 75 }
@@ -96,7 +96,7 @@ export class UserService {
           logrosCompletados: 20,
           puntosTotales: 400,
           puntosObtenidos: 100,
-          imagen: "lol_icon.png",
+          imagen: "assets/images/leagueoflegends.png",
           logros: [
             { nombreLogro: 'First Blood', puntos: 25 },
             { nombreLogro: 'Win a Ranked Game', puntos: 50 }
@@ -118,7 +118,7 @@ export class UserService {
           logrosCompletados: 48,
           puntosTotales: 1500,
           puntosObtenidos: 900,
-          imagen: "witcher3_icon.png",
+          imagen: "assets/images/thewitcher.jpg",
           logros: [
             { nombreLogro: 'Complete Main Quest', puntos: 200 },
             { nombreLogro: 'Collect All Gwent Cards', puntos: 300 }
@@ -140,7 +140,7 @@ export class UserService {
           logrosCompletados: 85,
           puntosTotales: 1000,
           puntosObtenidos: 750,
-          imagen: "animal_crossing_icon.png",
+          imagen: "assets/images/animalcrossing.png",
           logros: [
             { nombreLogro: 'Complete Museum', puntos: 500 },
             { nombreLogro: 'Fully Upgrade House', puntos: 250 }

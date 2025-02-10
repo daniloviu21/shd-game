@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/services/user.service';
+import { NavController } from '@ionic/angular';
+import { Usuario, Videojuego } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-item-archivement',
@@ -10,9 +11,14 @@ import { Usuario } from 'src/app/services/user.service';
 export class ItemArchivementComponent  implements OnInit {
 
   @Input() usuario!: Usuario | null;
+  //public juego!: Videojuego;
   
-  constructor() { }
+  constructor(private  navController: NavController) { }
 
   ngOnInit() {}
+
+  abrirDetalles(juego: Videojuego) {
+    this.navController.navigateForward(['/videojuego-detalles', { id: juego.id }]);
+  }
 
 }

@@ -2,7 +2,9 @@
 
 <ion-content>
   <ion-toolbar>
-    <ion-button expand="block" style="width: 60%; margin-left: 20px;">Agregar juego</ion-button>
+    <ion-button expand="block" style="width: 60%; margin-left: 20px; --background: #6d81b5; --color: white;">
+        Agregar juego
+      </ion-button>
     <ion-buttons slot="end">
         <ion-button>
             <ion-icon slot="icon-only" name="filter-circle-outline"></ion-icon>
@@ -15,5 +17,5 @@
     </ion-buttons>
 </ion-toolbar>
 
-  <app-item-archivement [usuario]="usuario" ></app-item-archivement>
+<app-item-archivement [usuario]="usuario" ></app-item-archivement>
 </ion-content>

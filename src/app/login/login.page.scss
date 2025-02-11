@@ -1,3 +1,8 @@
+ion-toolbar {
+  --background: #0e2a71;
+  --color: white; /* Color del texto */
+}
+
 .login-container {
   --background: hwb(0 100% 0%); // Fondo principal
   text-align: center;
@@ -48,7 +53,7 @@
   
     ion-checkbox {
       --size: 18px; /* Ajusta el tamaño del checkbox */
-      --checkbox-background-checked: #0e2a71; /* Azul profundo */
+      --checkbox-background-checked: #6d81b5; /* Azul profundo */
       --checkbox-border-color: #6d81b5; /* Azul grisáceo */
     }
   
@@ -89,7 +94,7 @@
     margin-top: 10px;
     font-size: 0.9rem;
     a {
-      color: #a4bcfc; // Azul claro
+      color: #0e2a71; // Azul claro
       text-decoration: none;
     }
   }

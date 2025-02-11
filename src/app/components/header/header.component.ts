@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +12,47 @@ import { NavController } from '@ionic/angular';
 export class HeaderComponent  implements OnInit {
   @Input() title !: string;
 
-  constructor(private navController: NavController) { }
+  constructor(private navController: NavController, private alertController: AlertController,
+    private toastController: ToastController, private route: Router) { }
 
   ngOnInit() {}
 
 
-navigateToLogin() {
-  this.navController.navigateRoot('/login');
-}
+  async confirmLogout() {
+    const alert = await this.alertController.create({
+      header: 'Cerrar Sesión',
+      message: '¿Seguro que quieres cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancelado cerrar sesión');
+          }
+        },
+        {
+          text: 'Cerrar Sesión',
+          handler: () => {
+            console.log('Cerrando sesión...');
+            // Aquí añadirías la lógica para manejar el cierre de sesión
+            // Por ejemplo, llamar a authService.logout() o similar
+            this.presentToast('Sesión cerrada.', 'success').then(() => {
+              this.navController.navigateForward('/login');
+            });
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
 
+  async presentToast(message: string, color: string = 'primary') {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color
+    });
+    toast.present();
+  }
 }

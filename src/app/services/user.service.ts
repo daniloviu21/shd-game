@@ -150,6 +150,37 @@ export class UserService {
     }
   ];
   
+  private juegosDisponibles: Videojuego[] = [
+    {
+      id: "someid1",
+      nombreVideojuego: 'League Of Legends',
+      logrosTotales: 50,
+      logrosCompletados: 10,
+      puntosTotales: 500,
+      puntosObtenidos: 100,
+      imagen: 'assets/images/leagueoflegends.png',
+      logros: [
+        { nombreLogro: 'No tienes vida', puntos: 1000},
+      ]
+    },
+    {
+      id: "someid2",
+      nombreVideojuego: 'Animal Crossing',
+      logrosTotales: 75,
+      logrosCompletados: 20,
+      puntosTotales: 750,
+      puntosObtenidos: 150,
+      imagen: 'assets/images/animalcrossing.png',
+      logros: [
+        {nombreLogro: 'Bienvenido al tutorial', puntos: 60},
+      ]
+    }
+  ];
+
+  getJuegosDisponibles(): Videojuego[] {
+    return this.juegosDisponibles;
+  }
+  
   //creamos un usarioActual
   private usuarioActual: Usuario | null = null;
 
@@ -211,5 +242,13 @@ export class UserService {
       }
     }
     return undefined;  // Retorna undefined si no se encuentra el juego
+  }
+
+  agregarJuegoAUsuario(juego: Videojuego): void {
+    if (this.usuarioActual && !this.usuarioActual.videojuegos.find(vj => vj.id === juego.id)) {
+      this.usuarioActual.videojuegos.push(juego);
+      this.calcularPuntosUsuario(this.usuarioActual);  // Recalcular los puntos totales después de agregar el juego
+      this.saveCurrentUser();  // Actualiza el usuario en el almacenamiento local
+    }
   }
 }

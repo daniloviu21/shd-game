@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, ToastController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { UserService, Usuario } from '../services/user.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class LoginPage implements OnInit {
   constructor(
     private navCtrl: NavController, 
     private userService: UserService, 
-    private toastController: ToastController
+    private toastController: ToastController,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {}
@@ -36,14 +37,28 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    this.usuario = this.userService.authenticate(this.username, this.password);
-
-    if (this.usuario) {
-      console.log('Inicio de sesión exitoso', this.usuario);
-      this.userService.setUsuario(this.usuario);
-      this.navCtrl.navigateForward('/tabs');
-    } else {
-      await this.showToast('Credenciales incorrectas');
+    const loading = await this.loadingCtrl.create({
+      message: 'Iniciando sesión...',
+      duration: 5000,
+    });
+  
+    await loading.present();
+  
+    try {
+      this.usuario = this.userService.authenticate(this.username, this.password);
+  
+      if (this.usuario) {
+        console.log('Inicio de sesión exitoso', this.usuario);
+        this.userService.setUsuario(this.usuario);
+        await this.navCtrl.navigateForward('/tabs');
+      } else {
+        await this.showToast('Credenciales incorrectas');
+      }
+    } catch (error) {
+      await this.showToast('Error al iniciar sesión');
+      console.error('Error de login', error);
+    } finally {
+      await loading.dismiss();
     }
   }
   

@@ -1,7 +1,7 @@
 <ion-list>
 <ion-item lines="none" button *ngFor="let juego of usuario?.videojuegos" (click)="abrirDetalles(juego)">
   <ion-thumbnail slot="start">
-    <img src="../../../assets/icon/favicon.png" alt="Minecraft Icon" />
+    <img [src]="juego.imagen" alt="Minecraft Icon" />
   </ion-thumbnail>
   <ion-label>
     <h3><strong>{{juego.nombreVideojuego}}</strong></h3>

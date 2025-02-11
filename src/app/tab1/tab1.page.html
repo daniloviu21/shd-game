@@ -1,6 +1,31 @@
 <app-header title="Perfil"></app-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" id="open-modal">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <app-profile [usuario]="usuario"></app-profile>
   <app-games [usuario]="usuario"></app-games>
+
+  <ion-modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+    <ng-template>
+      <ion-content class="ion-padding" style="height: 100%;">
+        <ion-list>
+          <ion-item *ngFor="let juego of juegosDisponibles" lines="none">
+            <ion-thumbnail slot="start">
+              <img [src]="juego.imagen" alt="{{ juego.nombreVideojuego }}" />
+            </ion-thumbnail>
+            <ion-label>{{ juego.nombreVideojuego }}</ion-label>
+            <ion-button slot="end" fill="clear" (click)="agregarJuegoAUsuario(juego)">
+              <ion-icon name="add-circle"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
+
 </ion-content>

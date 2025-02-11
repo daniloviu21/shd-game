@@ -1,3 +1,7 @@
+ion-toolbar {
+  --background: #0e2a71;
+  --color: white; /* Color del texto */
+}
 
 .login-container {
     --background: hwb(0 100% 0%); // Fondo principal
@@ -83,7 +87,7 @@
       margin-top: 10px;
       font-size: 0.9rem;
       a {
-        color: #a4bcfc; // Azul claro
+        color: #0e2a71; // Azul claro
         text-decoration: none;
       }
     }

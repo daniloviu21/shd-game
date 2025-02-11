@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService, Usuario } from '../services/user.service';
+import { UserService, Usuario, Videojuego} from '../services/user.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,9 +10,12 @@ import { UserService, Usuario } from '../services/user.service';
 export class Tab1Page {
 
   usuario!: Usuario;
+  //juego?: Videojuego;  // Asumiendo que tienes un tipo Videojuego
+  juegosDisponibles!: Videojuego[]; 
   
-    constructor(private userService: UserService) {
+    constructor(public userService: UserService) {
       this.loadUsuario();
+      this.loadJuegosDisponibles();  // Llamar a la función que carga los juegos disponibles
     }
   
     loadUsuario() {
@@ -22,6 +25,16 @@ export class Tab1Page {
       } else {
         console.error('No hay un usuario autenticado.');
       }
+    }
+
+    loadJuegosDisponibles() {
+      // Esto puede ser un llamado a un servicio o simplemente asignar una lista estática
+      this.juegosDisponibles = this.userService.getJuegosDisponibles();
+    }
+
+    agregarJuegoAUsuario(juego: Videojuego) {
+      this.userService.agregarJuegoAUsuario(juego);
+      this.loadUsuario();  // Recargar la información del usuario para actualizar la UI
     }
 
 }
